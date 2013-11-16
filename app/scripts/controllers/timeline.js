@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookmarkApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('TimelineCtrl', function ($scope) {
 
     $scope.datepickerOptions = {
         format: 'dd-mm-yyyy',

@@ -1,4 +1,3 @@
 'use strict';
 
-angular.module('bookmarkApp', []);
-
+angular.module('bookmarkApp', ['ng-bootstrap-datepicker']);

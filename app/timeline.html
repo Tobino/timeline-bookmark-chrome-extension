@@ -13,21 +13,15 @@
 
 	    <!-- build:js({.tmp,app}) scripts/scripts.js -->
 	    <script src="scripts/app.js"></script>
-	    <script src="scripts/controllers/main.js"></script>
+	    <script src="scripts/controllers/timeline.js"></script>
     	<!-- endbuild -->
 
         <!-- build:js scripts/app.js -->
         <script src="scripts/popup.js"></script>
         <!-- endbuild -->
     </head>
-    <body ng-controller="MainCtrl">
+    <body ng-controller="TimelineCtrl">
         <!-- CHROME EXTENSION POPUP -->
-        {{title}}
-        {{url}}
-        {{date}}
-        <input type="text" ng-datepicker ng-options="datepickerOptions" ng-model="date">
-        <a ng-click="save()" class="btn btn-primary">Save</a>
-        <a ng-click="timeline()" class="btn btn-primary">TimeLine</a>
-        <a hng-click="options()" class="btn btn-primary">options</a>
+        {{bookmark}}
     </body>
 </html>
