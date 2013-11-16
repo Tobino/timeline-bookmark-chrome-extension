@@ -1,12 +1,23 @@
 <!doctype html>
-<html>
+<html ng-app="bookmarkApp" ng-csp>
     <head>
         <link href="styles/main.css" rel="stylesheet">
-        <!-- build:js scripts/popup.js -->
+
+
+	    <script src="bower_components/angular/angular.js"></script>
+
+	    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+	    <script src="scripts/app.js"></script>
+	    <script src="scripts/controllers/main.js"></script>
+    	<!-- endbuild -->
+
+        <!-- build:js scripts/app.js -->
         <script src="scripts/popup.js"></script>
         <!-- endbuild -->
     </head>
-    <body>
+    <body ng-controller="MainCtrl">
         <!-- CHROME EXTENSION POPUP -->
+        <h1>{{title}}</h1>
+        <h2>{{url}}</h2>
     </body>
 </html>
