@@ -3,36 +3,20 @@
 angular.module('bookmarkApp')
   .controller('TimelineCtrl', function ($scope) {
 
-    $scope.datepickerOptions = {
-        format: 'dd-mm-yyyy',
-        language: 'fr',
-        autoclose: true,
-        weekStart: 0
-    }
+	chrome.storage.sync.get('bookmark', function(value) {
+	  // The $apply is only necessary to execute the function inside Angular scope
+	  $scope.$apply(function() {
+	    $scope.load(value);
+	  });
+	});
 
-  	chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
-	   function(tabs){
-	      $scope.$apply(function(){
-	      	$scope.url = tabs[0].url;
-	      	$scope.title = tabs[0].title;
-	  	  });
-	   }
-	);
-
-    $scope.save = function() {
-      console.log($scope.title);
-      console.log($scope.url);
-      console.log($scope.date);
-    };
-
-    $scope.timeline = function() {
-    	chrome.tabs.create({url: "timeline.html"});
-    };
-
-    $scope.options = function() {
-    	chrome.tabs.create({url: "options.html"});
-    };
-
-
+	// If there is saved data in storage, use it. Otherwise, bootstrap with sample todos
+	$scope.load = function(value) {
+	  if (value && value.bookmark) {
+	    $scope.bookmark = value.bookmark;
+	  } else {
+	    $scope.bookmark = [];
+	  }
+	}
 
   });
