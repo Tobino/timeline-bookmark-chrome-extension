@@ -42,6 +42,7 @@ angular.module('bookmarkApp')
         date:$scope.date
       });
       chrome.storage.sync.set({'bookmark':$scope.bookmark});
+      window.close();
     };
 
     $scope.timeline = function() {

@@ -19,6 +19,21 @@
     </head>
     <body ng-controller="TimelineCtrl">
         <!-- CHROME EXTENSION POPUP -->
-        {{bookmark}}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Url</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="site in bookmark | filter:q | orderBy: 'date'">
+              <td>{{site.title}}</td>
+              <td><a ng-href="{{site.url}}">{{site.url}}</a></td>
+              <td>{{site.date}}</td>
+            </tr>
+          </tbody>
+        </table>
     </body>
 </html>
