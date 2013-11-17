@@ -6,7 +6,7 @@ angular.module('bookmarkApp')
     $scope.datepickerOptions = {
         format: 'dd-mm-yyyy',
         language: 'fr',
-        autoclose: true,
+        autoclose: false,
         weekStart: 0
     }
 
@@ -34,7 +34,7 @@ angular.module('bookmarkApp')
           $scope.title = tabs[0].title;
           $scope.tabId = tabs[0].id;
         });
-        $scope.save();
+        //$scope.save();
       }
     );
 
@@ -49,6 +49,8 @@ angular.module('bookmarkApp')
         //path: request.newIconPath,
         path: {'19': 'images/icon-19-2.png','38':'images/icon-38-2.png'},
         tabId: $scope.tabId
+      },function(){
+        window.close();
       });
     };
 
