@@ -19,6 +19,7 @@ angular.module('bookmarkApp')
 
     // If there is saved data in storage, use it. Otherwise, bootstrap with sample todos
     $scope.load = function(value) {
+      //chrome.storage.sync.set({'bookmark':null});
       if (value && value.bookmark) {
         $scope.bookmark = value.bookmark;
       } else {
@@ -27,14 +28,14 @@ angular.module('bookmarkApp')
     }
 
     chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
-     function(tabs){
+      function(tabs){
         $scope.$apply(function(){
           $scope.url = tabs[0].url;
           $scope.title = tabs[0].title;
           $scope.tabId = tabs[0].id;
         });
-     }
-  );
+      }
+    );
 
     $scope.save = function() {
       $scope.bookmark.push({
@@ -48,6 +49,12 @@ angular.module('bookmarkApp')
         path: {'19': 'images/icon-19-2.png','38':'images/icon-38-2.png'},
         tabId: $scope.tabId
       });
+    };
+
+    $scope.remove = function (bookmark) {
+      var bookmarks = $scope.bookmark;
+      bookmarks.splice(bookmarks.indexOf(bookmark), 1);
+      chrome.storage.sync.set({'bookmark':$scope.bookmark});
     };
 
     $scope.timeline = function() {
