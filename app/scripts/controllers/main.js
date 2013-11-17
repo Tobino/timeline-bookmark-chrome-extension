@@ -26,14 +26,14 @@ angular.module('bookmarkApp')
       }
     }
 
-  	chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
-	   function(tabs){
-	      $scope.$apply(function(){
-	      	$scope.url = tabs[0].url;
-	      	$scope.title = tabs[0].title;
-	  	  });
-	   }
-	);
+    chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT},
+     function(tabs){
+        $scope.$apply(function(){
+          $scope.url = tabs[0].url;
+          $scope.title = tabs[0].title;
+        });
+     }
+  );
 
     $scope.save = function() {
       $scope.bookmark.push({
@@ -46,11 +46,11 @@ angular.module('bookmarkApp')
     };
 
     $scope.timeline = function() {
-    	chrome.tabs.create({url: "timeline.html"});
+      chrome.tabs.create({url: "timeline.html"});
     };
 
     $scope.options = function() {
-    	chrome.tabs.create({url: "options.html"});
+      chrome.tabs.create({url: "options.html"});
     };
 
 
