@@ -15,18 +15,12 @@
 	    <script src="scripts/app.js"></script>
 	    <script src="scripts/controllers/main.js"></script>
     	<!-- endbuild -->
-
-        <!-- build:js scripts/app.js -->
-        <script src="scripts/popup.js"></script>
-        <!-- endbuild -->
     </head>
     <body ng-controller="MainCtrl">
         <!-- CHROME EXTENSION POPUP -->
         {{title}}
-        {{url}}
         <input type="text" ng-datepicker ng-options="datepickerOptions" ng-model="date">
         <a ng-click="save()" class="btn btn-primary">Save</a>
         <a ng-click="timeline()" class="btn btn-primary">TimeLine</a>
-        <a hng-click="options()" class="btn btn-primary">options</a>
     </body>
 </html>
