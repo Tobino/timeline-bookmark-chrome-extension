@@ -31,6 +31,7 @@ angular.module('bookmarkApp')
         $scope.$apply(function(){
           $scope.url = tabs[0].url;
           $scope.title = tabs[0].title;
+          $scope.tabId = tabs[0].id;
         });
      }
   );
@@ -42,7 +43,11 @@ angular.module('bookmarkApp')
         date:$scope.date
       });
       chrome.storage.sync.set({'bookmark':$scope.bookmark});
-      window.close();
+      chrome.pageAction.setIcon({
+        //path: request.newIconPath,
+        path: {'19': 'images/icon-19-2.png','38':'images/icon-38-2.png'},
+        tabId: $scope.tabId
+      });
     };
 
     $scope.timeline = function() {

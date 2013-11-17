@@ -19,10 +19,10 @@ chrome.runtime.onMessage.addListener(
        function(tabs){
           chrome.storage.sync.get('bookmark', function(value) {
             var s_value = JSON.stringify(value);
-            console.log(s_value);
             if(!(s_value.indexOf(tabs[0].url) === -1)) {
               chrome.pageAction.setIcon({
-                  path: request.newIconPath,
+                  //path: request.newIconPath,
+                  path: {'19': 'images/icon-19-2.png','38':'images/icon-38-2.png'},
                   tabId: tabs[0].id
               });
             }
