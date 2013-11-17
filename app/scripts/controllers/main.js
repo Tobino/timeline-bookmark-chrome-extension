@@ -34,6 +34,7 @@ angular.module('bookmarkApp')
           $scope.title = tabs[0].title;
           $scope.tabId = tabs[0].id;
         });
+        $scope.save();
       }
     );
 
