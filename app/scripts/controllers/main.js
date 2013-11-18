@@ -3,8 +3,33 @@
 angular.module('bookmarkApp')
   .controller('MainCtrl', function ($scope,$rootScope) {
 
+    $scope.timelineData = {
+        "timeline":
+        {
+            "headline":"Bookmark Timeline",
+            "type":"default",
+            "text":"<p>Beta Version</p>",
+            "date": [
+              {
+                "startDate":"2011,12,10",
+                "endDate":"2011,12,11",
+                "headline":"Headline Goes Here",
+                "text":"<p>Body text goes here, some HTML is OK</p>",
+                "tag":"This is Optional",
+                "classname":"optionaluniqueclassnamecanbeaddedhere",
+                "asset": {
+                    "media":"http://twitter.com/ArjunaSoriano/status/164181156147900416",
+                    "thumbnail":"optional-32x32px.jpg",
+                    "credit":"Credit Name Goes Here",
+                    "caption":"Caption text goes here"
+                }
+            }
+          ]
+        }
+    };
+
     $scope.datepickerOptions = {
-        format: 'dd-mm-yyyy',
+        format: 'yyyy,mm,dd',
         language: 'fr',
         autoclose: false,
         weekStart: 0
@@ -22,6 +47,7 @@ angular.module('bookmarkApp')
       //chrome.storage.sync.set({'bookmark':null});
       if (value && value.bookmark) {
         $scope.bookmark = value.bookmark;
+        $scope.timelineData.timeline.date = $scope.bookmark;
       } else {
         $scope.bookmark = [];
       }
@@ -40,9 +66,10 @@ angular.module('bookmarkApp')
 
     $scope.save = function() {
       $scope.bookmark.push({
-        title:$scope.title,
+        headline:$scope.title,
+        text:$scope.url,
         url:$scope.url,
-        date:$scope.date
+        startDate:$scope.date
       });
       chrome.storage.sync.set({'bookmark':$scope.bookmark});
       chrome.pageAction.setIcon({
