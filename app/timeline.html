@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="site in bookmark | filter:q | orderBy: 'date'">
+            <tr ng-repeat="site in bookmark track by $index | filter:q | orderBy: 'date'">
               <td><a ng-href="{{site.url}}">{{site.title}}</a></td>
               <td>{{site.date}}</td>
               <td><a ng-click="remove(site)"><i class="icon-remove"></i></a></td>
