@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bookmarkApp', ['ng-bootstrap-datepicker']);
-
+/*
 $(document).ready(function() {
     createStoryJS({
         type:       'timeline',
@@ -11,3 +11,5 @@ $(document).ready(function() {
         embed_id:   'my-timeline'
     });
 });
+
+*/
